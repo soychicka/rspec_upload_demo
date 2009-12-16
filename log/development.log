@@ -1,0 +1,1435 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (181.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (32.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUploads (20091214214302)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (91.4ms)[0m   [0;1mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (1.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (12.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-14 13:45:35) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"sh8q+g6gdzqSF/DAR5vT0O4YRImmag35HwLl3FKZxaI=", "import"=>{"date(1i)"=>"2009", "date(2i)"=>"12", "date(3i)"=>"14", "date(4i)"=>"21", "date(5i)"=>"37", "filename"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-89789-8823t0-0>, "contents"=>"", "description"=>""}}
+
+ActionController::RoutingError (No route matches "/imports" with {:method=>:post}):
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 13:45:41) [GET]
+  [4;36;1mUpload Load (1.4ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 87ms (View: 75, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 13:45:43) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 33ms (View: 19, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-14 13:47:00) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"content"=>""}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (16.1ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(NULL, '2009-12-14 21:47:00.885794', '2009-12-14 21:47:00.885794', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/uploads/1
+Completed in 42ms (DB: 17) | 302 Found [http://localhost/uploads]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#show (for 127.0.0.1 at 2009-12-14 13:47:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) [0m
+Rendering template within layouts/uploads
+Rendering uploads/show
+Completed in 29ms (View: 12, DB: 1) | 200 OK [http://localhost/uploads/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 13:47:20) [GET]
+  [4;35;1mUpload Load (1.5ms)[0m   [0mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 28ms (View: 16, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 13:47:21) [GET]
+  [4;36;1mUpload Load (1.5ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 28ms (View: 16, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 13:49:04) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 24ms (View: 9, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 13:51:36) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 29ms (View: 15, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-14 13:51:45) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/uploads_controller.rb:45:in `create'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.0ms)
+Rendered rescues/_request_and_response (2.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 13:55:27) [GET]
+  [4;35;1mUpload Load (1.5ms)[0m   [0mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 28ms (View: 16, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 13:55:29) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :file:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field :upload, :file %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (168.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 13:56:08) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :file:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :file) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (81.5ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 13:57:05) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (83.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:03:08) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+ERROR: compiling _run_erb_app47views47uploads47new46html46erb RAISED compile error
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected ',', expecting kEND
+;  form_for(@upload), :html => { :multipart => true...
+                     ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected kDO, expecting kEND
+...l => { :multipart => true } do |f| ; @output_buffer.concat "...
+                              ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:17: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _run_erb_app47views47uploads47new46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>New upload</h1>\n\n"
+
+;  form_for(@upload), :html => { :multipart => true } do |f| ; @output_buffer.concat "\n  "
+; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n\n  <p>\n    "
+
+
+; @output_buffer.concat(( f.label :file ).to_s); @output_buffer.concat "<br />\n    "
+; @output_buffer.concat(( f.file_field(:upload, :content) ).to_s); @output_buffer.concat "\n  </p>\n\n  <p>\n    "
+
+
+
+; @output_buffer.concat(( f.submit 'Create' ).to_s); @output_buffer.concat "\n  </p>\n"
+
+;  end ; @output_buffer.concat "\n\n"
+
+; @output_buffer.concat(( link_to 'Back', uploads_path ).to_s); @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:17:in `compile!'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/renderable.rb:61:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/renderable.rb:28:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/template.rb:199:in `render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/base.rb:260:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/base.rb:343:in `_render_with_layout'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/base.rb:257:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:1250:in `render_for_file'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:135:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:135:in `custom'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:179:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:179:in `respond'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:173:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:173:in `respond'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/controllers/uploads_controller.rb:29:in `new'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:1331:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:617:in `call_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/flash.rb:146:in `perform_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:532:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:532:in `process_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:606:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:391:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:386:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/routing/route_set.rb:437:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:121:in `_call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+./script/server:3
+
+ActionView::TemplateError (compile error
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected ',', expecting kEND
+;  form_for(@upload), :html => { :multipart => true...
+                     ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected kDO, expecting kEND
+...l => { :multipart => true } do |f| ; @output_buffer.concat "...
+                              ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:17: syntax error, unexpected kENSURE, expecting $end) on line #3 of app/views/uploads/new.html.erb:
+1: <h1>New upload</h1>
+2: 
+3: <% form_for(@upload), :html => { :multipart => true } do |f| %>
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+
+    app/views/uploads/new.html.erb:17:in `compile!'
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (86.7ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:03:35) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (84.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:10:22) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (184.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:10:25) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (82.5ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:10:29) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (84.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 14:10:33) [GET]
+  [4;36;1mUpload Load (1.5ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 28ms (View: 16, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:10:35) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (170.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:10:58) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (85.3ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:01) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field(:upload, :content) %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (84.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:11) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field :upload, :content %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (169.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:16) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined method `merge' for :content:Symbol) on line #8 of app/views/uploads/new.html.erb:
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+8:     <%= f.file_field :upload, :content %>
+9:   </p>
+10: 
+11:   <p>
+
+    app/views/uploads/new.html.erb:8
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (82.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:32) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 31ms (View: 17, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:38) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 30ms (View: 16, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:48) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 30ms (View: 16, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:11:56) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 31ms (View: 17, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:12:22) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+ERROR: compiling _run_erb_app47views47uploads47new46html46erb RAISED compile error
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected ',', expecting kEND
+;  form_for(:upload), :html => { :multipart => true...
+                     ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected kDO, expecting kEND
+...l => { :multipart => true } do |form| ; @output_buffer.conca...
+                              ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:20: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _run_erb_app47views47uploads47new46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1>New upload</h1>\n\n"
+
+;  form_for(:upload), :html => { :multipart => true } do |form| ; @output_buffer.concat "\n  "
+; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n\n  <p>\n    "
+
+
+; @output_buffer.concat(( f.label :file ).to_s); @output_buffer.concat "<br />\n    "
+; @output_buffer.concat(( f.file_field :file ).to_s); @output_buffer.concat "\n  </p>\n  <p>\n    "
+
+
+; @output_buffer.concat(( f.label :content ).to_s); @output_buffer.concat "<br />\n    "
+; @output_buffer.concat(( f.text_field :content ).to_s); @output_buffer.concat "\n  </p>\n  <p>\n    "
+
+
+; @output_buffer.concat(( f.submit 'Create' ).to_s); @output_buffer.concat "\n  </p>\n"
+
+;  end ; @output_buffer.concat "\n\n"
+
+; @output_buffer.concat(( link_to 'Back', uploads_path ).to_s); @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:20:in `compile!'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/renderable.rb:61:in `compile'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/renderable.rb:28:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/template.rb:199:in `render_template'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/base.rb:260:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/base.rb:343:in `_render_with_layout'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_view/base.rb:257:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:1250:in `render_for_file'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:51:in `render'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:135:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:135:in `custom'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:179:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:179:in `respond'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:173:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:173:in `respond'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/controllers/uploads_controller.rb:29:in `new'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:1331:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:617:in `call_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/usr/local/lib/ruby/gems/1.8/gems/activesupport-2.3.4/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/flash.rb:146:in `perform_action'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:532:in `send'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:532:in `process_without_filters'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/filters.rb:606:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:391:in `process'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/base.rb:386:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/routing/route_set.rb:437:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:121:in `_call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:29:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:9:in `cache'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/query_cache.rb:28:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/activerecord-2.3.4/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/params_parser.rb:15:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/session/cookie_store.rb:93:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/failsafe.rb:26:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:114:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/reloader.rb:34:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.4/lib/action_controller/dispatcher.rb:108:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.3.4/lib/rails/rack/static.rb:31:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.3.4/lib/rails/rack/log_tailer.rb:17:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:50:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/local/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/webrick.rb:14:in `run'
+/usr/local/lib/ruby/gems/1.8/gems/rails-2.3.4/lib/commands/server.rb:111
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+./script/server:3
+
+ActionView::TemplateError (compile error
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected ',', expecting kEND
+;  form_for(:upload), :html => { :multipart => true...
+                     ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:3: syntax error, unexpected kDO, expecting kEND
+...l => { :multipart => true } do |form| ; @output_buffer.conca...
+                              ^
+/Users/soychicka/Sites/ruby/cloud/testApps/uploady2/app/views/uploads/new.html.erb:20: syntax error, unexpected kENSURE, expecting $end) on line #3 of app/views/uploads/new.html.erb:
+1: <h1>New upload</h1>
+2: 
+3: <% form_for(:upload), :html => { :multipart => true } do |form| %>
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+
+    app/views/uploads/new.html.erb:20:in `compile!'
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (156.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:12:44) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x10441d818>) on line #4 of app/views/uploads/new.html.erb:
+1: <h1>New upload</h1>
+2: 
+3: <% form_for :upload, :html => { :multipart => true } do |form| %>
+4:   <%= f.error_messages %>
+5: 
+6:   <p>
+7:     <%= f.label :file %><br />
+
+    app/views/uploads/new.html.erb:4
+    app/views/uploads/new.html.erb:3
+    app/controllers/uploads_controller.rb:29:in `new'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (79.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:12:51) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 113ms (View: 98, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:13:03) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"content"=>"a", "file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-89789-zltbbi-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 23ms (View: 8, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:13:08) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"content"=>""}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 23ms (View: 8, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:13:31) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 28ms (View: 14, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:13:36) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-89789-1dkct5m-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:14:47) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 61ms (View: 46, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 14:14:56) [GET]
+  [4;36;1mUpload Load (1.5ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 38ms (View: 26, DB: 2) | 200 OK [http://localhost/uploads/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:14:59) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:15:04) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1mvj2f5-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:15:40) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:15:46) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-wtzobj-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:16:14) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:16:20) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-uh5rif-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:16:54) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1hchip8-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 22ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:17:00) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1i4kpb0-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:17:20) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1uk1ybm-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 21ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:17:26) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-x64rby-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 20ms (View: 6, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 14:20:20) [GET]
+  [4;35;1mUpload Load (1.5ms)[0m   [0mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 28ms (View: 16, DB: 2) | 200 OK [http://localhost/uploads/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:20:21) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/uploads_controller.rb:30:in `new'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (58.9ms)
+Rendered rescues/_request_and_response (2.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:21:48) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 30ms (View: 16, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-14 14:22:00) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-lwdbak-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+
+ActiveRecord::UnknownAttributeError (unknown attribute: file):
+  app/controllers/uploads_controller.rb:45:in `new'
+  app/controllers/uploads_controller.rb:45:in `create'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (144.1ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-14 14:30:40) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1f9pszv-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+
+ActiveRecord::UnknownAttributeError (unknown attribute: file):
+  app/controllers/uploads_controller.rb:45:in `new'
+  app/controllers/uploads_controller.rb:45:in `create'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (61.5ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:30:47) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 30ms (View: 16, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-14 14:30:53) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"content"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1pr4j4-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(NULL, '2009-12-14 22:30:53.100919', '2009-12-14 22:30:53.100919', E'--- !ruby/object:File 
+content_type: text/plain
+original_path: Untitled.txt
+') RETURNING "id"[0m
+  [4;36;1mSQL (19.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/uploads/2
+Completed in 66ms (DB: 20) | 302 Found [http://localhost/uploads]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#show (for 127.0.0.1 at 2009-12-14 14:30:53) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mUpload Load (0.6ms)[0m   [0mSELECT * FROM "uploads" WHERE ("uploads"."id" = 2) [0m
+Rendering template within layouts/uploads
+Rendering uploads/show
+Completed in 114ms (View: 96, DB: 1) | 200 OK [http://localhost/uploads/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 14:31:01) [GET]
+  [4;36;1mUpload Load (1.5ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 36ms (View: 24, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-14 14:32:33) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 29ms (View: 15, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-14 14:32:38) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091214-90337-1kdoh04-0>}, "authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8="}
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'Untitled.txt', '2009-12-14 22:32:39.017672', '2009-12-14 22:32:39.017672', E'file upload\\012- upload text file and put contents in db table.\\012- test in spec to verify it works\\012- write tutorial for how to do file upload in rails via tdd.\\012\\012\\012\\012\\012tab-delimited text\\012\\012\\012\\012\\012\\012\\012questions: \\012hosting on heroku: \\012file hosting = where?\\012\\012\\012\\012\\012\\012References to steps:\\012http://railsforum.com/viewtopic.php?id=35726\\012\\012\\012http://robwilkerson.org/2009/08/26/learning-ruby-on-rails-file-upload/\\012\\012Rails has a very nice feature, in my opinion, that encapsulates the entirety of a save action in a transaction.\\012\\012\\012\\012\\012http://www.frederico-araujo.com/tag/content_type/\\012uses command line tool \\342\\200\\234file\\342\\200\\235 included in most UNIX operating systems to retrieve content type/mime type') RETURNING "id"[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/uploads/3
+Completed in 27ms (DB: 2) | 302 Found [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#show (for 127.0.0.1 at 2009-12-14 14:32:39) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 3) [0m
+Rendering template within layouts/uploads
+Rendering uploads/show
+Completed in 21ms (View: 5, DB: 1) | 200 OK [http://localhost/uploads/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 14:32:45) [GET]
+  [4;35;1mUpload Load (1.5ms)[0m   [0mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 45ms (View: 33, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#destroy (for 127.0.0.1 at 2009-12-14 14:32:51) [DELETE]
+  Parameters: {"authenticity_token"=>"uiSU2VylRqFdYEKc0N4OVPdtdWk7g9kgnoEltX3cvy8=", "id"=>"2"}
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 2) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mUpload Destroy (25.8ms)[0m   [0;1mDELETE FROM "uploads" WHERE "id" = 2[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/uploads
+Completed in 45ms (DB: 28) | 302 Found [http://localhost/uploads/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-14 14:32:51) [GET]
+  [4;36;1mUpload Load (1.7ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 41ms (View: 27, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (10.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUploads (20091214214302)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-15 18:00:26) [GET]
+  [4;36;1mUpload Load (106.0ms)[0m   [0;1mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 459ms (View: 342, DB: 106) | 200 OK [http://localhost/uploads]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#new (for 127.0.0.1 at 2009-12-15 18:00:43) [GET]
+Rendering template within layouts/uploads
+Rendering uploads/new
+Completed in 49ms (View: 34, DB: 0) | 200 OK [http://localhost/uploads/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#create (for 127.0.0.1 at 2009-12-15 18:00:54) [POST]
+  Parameters: {"commit"=>"Create", "upload"=>{"file"=>#<File:/var/folders/tx/txF5WLKPFUiRrFjIb-V6BE+++TI/-Tmp-/RackMultipart20091215-11205-75sglt-0>}, "authenticity_token"=>"mgjrPJfF1Zrid2nXYC25Grdm2gAQGvs47CLzIlj+geE="}
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (58.4ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'Untitled.txt', '2009-12-16 02:00:54.020658', '2009-12-16 02:00:54.020658', E'file upload\\012- upload text file and put contents in db table.\\012- test in spec to verify it works\\012- write tutorial for how to do file upload in rails via tdd.\\012\\012\\012\\012\\012tab-delimited text\\012\\012\\012\\012\\012\\012\\012questions: \\012hosting on heroku: \\012file hosting = where?\\012\\012\\012\\012\\012\\012References to steps:\\012http://railsforum.com/viewtopic.php?id=35726\\012\\012\\012http://robwilkerson.org/2009/08/26/learning-ruby-on-rails-file-upload/\\012\\012Rails has a very nice feature, in my opinion, that encapsulates the entirety of a save action in a transaction.\\012\\012\\012\\012\\012http://www.frederico-araujo.com/tag/content_type/\\012uses command line tool \\342\\200\\234file\\342\\200\\235 included in most UNIX operating systems to retrieve content type/mime type') RETURNING "id"[0m
+  [4;35;1mSQL (32.7ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/uploads/4
+Completed in 231ms (DB: 91) | 302 Found [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#show (for 127.0.0.1 at 2009-12-15 18:00:54) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mUpload Load (0.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 4) [0m
+Rendering template within layouts/uploads
+Rendering uploads/show
+Completed in 64ms (View: 48, DB: 1) | 200 OK [http://localhost/uploads/4]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+
+
+Processing UploadsController#index (for 127.0.0.1 at 2009-12-15 18:00:58) [GET]
+  [4;35;1mUpload Load (1.5ms)[0m   [0mSELECT * FROM "uploads" [0m
+Rendering template within layouts/uploads
+Rendering uploads/index
+Completed in 44ms (View: 32, DB: 2) | 200 OK [http://localhost/uploads]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (7.7ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (246.4ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (1115.6ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (297.1ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (13.9ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (8.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (113.2ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (307.4ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (15.7ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (112.6ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (304.4ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (115.5ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (425.5ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (114.2ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (301.5ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (14.9ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (113.3ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (325.6ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (33.1ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (5.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (114.7ms)[0m   [0;1mDROP DATABASE IF EXISTS "uploady2_test"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET search_path TO public[0m
+  [4;36;1mSQL (333.4ms)[0m   [0;1mCREATE DATABASE "uploady2_test" ENCODING = 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (13.6ms)[0m   [0mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20091214214302')[0m

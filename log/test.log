@@ -1,0 +1,703 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPGError: ERROR: relation "uploads" does not exist
+: SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"uploads"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPGError: ERROR: relation "uploads" does not exist
+: SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"uploads"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (6.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (108.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (7.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUploads (20091214214302)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (14.6ms)[0m   [0;1mCREATE TABLE "uploads" ("id" serial primary key, "name" character varying(255), "content" bytea, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (1.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091214214302')[0m
+  [4;36;1mSQL (10.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (22.0ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (21.9ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(NULL, '2009-12-14 23:12:32.778981', '2009-12-14 23:12:32.778981', NULL) RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(NULL, '2009-12-14 23:23:34.889428', '2009-12-14 23:23:34.889428', NULL) RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:24:21.331233', '2009-12-14 23:24:21.331233', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:25:22.914998', '2009-12-14 23:25:22.914998', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:27:01.951678', '2009-12-14 23:27:01.951678', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:27:01.968143', '2009-12-14 23:27:01.968143', E'there is content') RETURNING "id"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUpload Load (0.0ms)[0m   [0mPGError: ERROR: invalid input syntax for integer: "--- :id
+"
+: SELECT * FROM "uploads" WHERE ("uploads"."id" = E'--- :id
+') [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:31:21.261385', '2009-12-14 23:31:21.261385', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:31:21.280739', '2009-12-14 23:31:21.280739', E'there is content') RETURNING "id"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUpload Load (0.0ms)[0m   [0mPGError: ERROR: invalid input syntax for integer: "--- :id
+"
+: SELECT * FROM "uploads" WHERE ("uploads"."id" = E'--- :id
+') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:32:14.203754', '2009-12-14 23:32:14.203754', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:32:14.227883', '2009-12-14 23:32:14.227883', E'there is content') RETURNING "id"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUpload Load (0.5ms)[0m   [0mSELECT * FROM "uploads" WHERE ("uploads"."id" = 10) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:33:16.470081', '2009-12-14 23:33:16.470081', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSAVEPOINT active_record_1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:33:16.486948', '2009-12-14 23:33:16.486948', E'there is content') RETURNING "id"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mRELEASE SAVEPOINT active_record_1[0m
+  [4;35;1mUpload Load (0.5ms)[0m   [0mSELECT * FROM "uploads" WHERE ("uploads"."id" = 12) LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:34:22.361223', '2009-12-14 23:34:22.361223', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (1.4ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 13) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:35:14.617138', '2009-12-14 23:35:14.617138', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 14) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:35:32.321002', '2009-12-14 23:35:32.321002', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 15) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:35:40.826000', '2009-12-14 23:35:40.826000', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.8ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 16) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:36:10.264281', '2009-12-14 23:36:10.264281', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 17) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:36:35.389839', '2009-12-14 23:36:35.389839', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 18) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'untitled.txt', '2009-12-14 23:38:06.921708', '2009-12-14 23:38:06.921708', E'there is content') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 19) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'fixtures/rspec.txt', '2009-12-14 23:42:13.868346', '2009-12-14 23:42:13.868346', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 20) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'fixtures/rspec.txt', '2009-12-14 23:42:54.035728', '2009-12-14 23:42:54.035728', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 21) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'fixtures/rspec.txt', '2009-12-14 23:47:57.862711', '2009-12-14 23:47:57.862711', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 22) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'fixtures/rspec.txt', '2009-12-14 23:48:22.312878', '2009-12-14 23:48:22.312878', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (2.2ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 23) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'fixtures/rspec.txt', '2009-12-14 23:48:32.044740', '2009-12-14 23:48:32.044740', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 24) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'fixtures/rspec.txt', '2009-12-14 23:48:53.025375', '2009-12-14 23:48:53.025375', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 25) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:49:12.588916', '2009-12-14 23:49:12.588916', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 26) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:49:46.177196', '2009-12-14 23:49:46.177196', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 27) LIMIT 1[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:52:12.353263', '2009-12-14 23:52:12.353263', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 28) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:57:21.192108', '2009-12-14 23:57:21.192108', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 29) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:59:04.310107', '2009-12-14 23:59:04.310107', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.9ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 30) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:59:16.637143', '2009-12-14 23:59:16.637143', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.8ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 31) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-14 23:59:48.979858', '2009-12-14 23:59:48.979858', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 32) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-15 00:01:03.859145', '2009-12-15 00:01:03.859145', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 33) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'./spec/fixtures/rspec.txt', '2009-12-15 00:01:24.386610', '2009-12-15 00:01:24.386610', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 34) LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-15 00:02:04.396139', '2009-12-15 00:02:04.396139', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 35) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (6.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (7.5ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (145.5ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-15 19:03:10.317350', '2009-12-15 19:03:10.317350', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (17.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 36) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-16 02:05:43.758619', '2009-12-16 02:05:43.758619', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.5ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-16 02:06:11.122059', '2009-12-16 02:06:11.122059', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.8ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-16 02:08:08.774312', '2009-12-16 02:08:08.774312', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'/spec/fixtures/rspec.txt', '2009-12-16 02:08:54.845022', '2009-12-16 02:08:54.845022', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'./spec/fixtures/rspec.txt', '2009-12-16 02:09:32.299579', '2009-12-16 02:09:32.299579', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.6ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'/spec/fixtures/rspec.txt', '2009-12-16 02:10:17.882162', '2009-12-16 02:10:17.882162', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSAVEPOINT active_record_1[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mINSERT INTO "uploads" ("name", "created_at", "updated_at", "content") VALUES(E'spec/fixtures/rspec.txt', '2009-12-16 02:11:24.000564', '2009-12-16 02:11:24.000564', E'') RETURNING "id"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mRELEASE SAVEPOINT active_record_1[0m
+  [4;36;1mUpload Load (0.7ms)[0m   [0;1mSELECT * FROM "uploads" WHERE ("uploads"."id" = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mROLLBACK[0m

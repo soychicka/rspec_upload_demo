@@ -1,0 +1,71 @@
+./script/generate rspec_model [modelname]
+
+
+Process:
+
+
+rspec installed
+
+script/generate rspec
+./script/generate rspec_model [modelname]
+
+set up test database
+- config/database.yml (needs test user)
+- rake db:create:all (creates test database)
+- rake environment RAILS_ENV=test db:migrate  (prepares test database)
+
+
+
+
+
+
+Creating Rails Views with RSpec
+===============================
+
+1. Figure out what view we need to create.
+	Get list of views from controller specs - render() calls.
+	Usually do it right after finishing the controller spec that requires it.
+
+2. Create the spec file.
+	Copy from an existing file, as there's no script/generate rspec_view.
+	    Or use: script/generate rspec_controller --svn --skip ExistingController new_action
+
+3. Create a context ("describe" section) describing what gets passed to the view.
+
+4. Set up any fixtures that are necessary.
+    At the beginning of the "describe" section, add:
+        fixtures :model_name, :other_model
+
+5. In the "before" section, set up the context.
+	Assign variables via assigns[:var_name].
+	Render the template: render 'events/index', :helper => 'helper_name'
+
+6. In each example, test that the output is as expected.
+	response.should have_tag('h1') # There's an H1 element in the output.
+	response.should have_tag('h1', 'full text inside any H1 element')
+	response.should have_tag('h1', /some text inside any H1 element/)
+	response.should have_text('full text of the page') # USELESS!
+	response.should have_text(/some text anywhere within the page/)
+	response.should have_tag('tr') do
+	  with_tag('td', /#{@event.name}/)
+	end
+    response.should have_tag("form[method=post][action=/company/clone/#{@company.id}]") do
+      with_tag('input[type=submit][value=Clone Company]')
+    end
+
+7. Run the spec tests.
+	rake spec:views
+	rake spec
+
+8. Edit the view to pass the specs.
+
+9. Once the specs all pass, commit.
+	svn update
+	rake spec:doc > doc/specs.txt
+	rake stats > doc/stats.txt
+	svn commit -m 'Added events/index view.'
+
+10. Take a look at the page in your browser.
+	rake spec:db:fixtures:load # Loads into development environment by default.
+	./script/server
+
